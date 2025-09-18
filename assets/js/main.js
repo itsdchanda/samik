@@ -1,4 +1,4 @@
-(function () {
+document.addEventListener('DOMContentLoaded', function () {
   "use strict";
 
   // ======= Sticky
@@ -155,12 +155,14 @@
   // invoke theme check on initial load
   themeCheck();
   /* ========  themeSwitcher End ========= */
-})();
+});
 
 
 
 
 function showMoreCards() {
-  document.getElementById("moreCards").classList.remove("hidden");
-  document.getElementById("viewMoreBtn").classList.add("hidden");
+  const moreCards = document.getElementById("moreCards");
+  const viewMoreBtn = document.getElementById("viewMoreBtn");
+  if (moreCards) moreCards.classList.remove("hidden");
+  if (viewMoreBtn) viewMoreBtn.classList.add("hidden");
 }
