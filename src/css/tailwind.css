@@ -1125,6 +1125,10 @@ button, a, input, textarea {
   display: grid;
 }
 
+.contents{
+  display: contents;
+}
+
 .hidden{
   display: none;
 }
@@ -1200,6 +1204,10 @@ button, a, input, textarea {
 
 .min-h-\[80vh\]{
   min-height: 80vh;
+}
+
+.w-0{
+  width: 0px;
 }
 
 .w-0\.5{
@@ -1294,6 +1302,10 @@ button, a, input, textarea {
   max-width: 32rem;
 }
 
+.flex-shrink{
+  flex-shrink: 1;
+}
+
 .flex-shrink-0{
   flex-shrink: 0;
 }
@@ -1359,6 +1371,14 @@ button, a, input, textarea {
 
 .grid-cols-3{
   grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.grid-cols-4{
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.flex-row{
+  flex-direction: row;
 }
 
 .flex-col{
@@ -2012,6 +2032,11 @@ button, a, input, textarea {
 
 .text-5xl{
   font-size: 3rem;
+  line-height: 1;
+}
+
+.text-6xl{
+  font-size: 3.75rem;
   line-height: 1;
 }
 

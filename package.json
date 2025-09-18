@@ -4,9 +4,10 @@
   "description": "Professional portfolio website for Dr. Samik Chowdhury - Agricultural Research Scientist",
   "main": "index.html",
   "scripts": {
-    "dev": "tailwindcss -i ./src/input.css -o ./src/css/tailwind.css --watch",
+    "dev": "tailwindcss -i ./src/input.css -o ./src/css/tailwind.css --watch & python -m http.server 8000",
     "build": "tailwindcss -i ./src/input.css -o ./src/css/tailwind.css --minify",
-    "serve": "python -m http.server 8000"
+    "serve": "python -m http.server 8000",
+    "css": "tailwindcss -i ./src/input.css -o ./src/css/tailwind.css --watch"
   },
   "keywords": [
     "portfolio",
