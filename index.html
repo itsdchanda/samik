@@ -24,16 +24,25 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
+        darkMode: 'class',
         theme: {
           extend: {
             colors: {
               primary: '#3056d3',
-              dark: '#1f2937'
+              dark: '#1f2937',
+              'dark-2': '#111827'
+            },
+            fontFamily: {
+              'inter': ['Inter', 'sans-serif'],
+              'playfair': ['Playfair Display', 'serif']
             }
           }
         }
       }
     </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- ==== WOW JS ==== -->
     <script src="assets/js/wow.min.js"></script>
@@ -42,280 +51,358 @@
     </script>
   </head>
 
- <body>
+ <body class="font-inter">
 <!-- ====== Navbar Section Start -->
-<div class="absolute top-0 left-0 z-40 flex items-center w-full bg-transparent ud-header">
+<div class="fixed top-0 left-0 z-50 flex items-center w-full bg-white/95 backdrop-blur-md shadow-lg ud-header transition-all duration-300">
   <div class="container px-4 mx-auto">
     <div class="relative flex items-center justify-between -mx-4">
       <div class="max-w-full px-4 w-60">
-        <a href="index.html" class="block w-full py-5 navbar-logo">
-          <span class="text-black text-lg font-bold group-hover:text-primary">Samik Chowdhury</span>
+        <a href="index.html" class="block w-full py-4 navbar-logo">
+          <span class="text-gray-800 text-xl font-bold font-playfair hover:text-primary transition-colors">Dr. Samik Chowdhury</span>
         </a>
       </div>
       <div class="flex items-center justify-between w-full px-4">
-        <div>
+        <div class="flex items-center space-x-4">
+          <!-- Theme Switcher -->
           <button
-            id="navbarToggler"
-            class="absolute right-4 top-1/2 block -translate-y-1/2 rounded-lg px-3 py-[6px] ring-primary focus:ring-2 lg:hidden"
+            id="themeSwitcher"
+            class="p-2 rounded-lg bg-gray-100 hover:bg-gray-200 dark:bg-gray-700 dark:hover:bg-gray-600 transition-colors"
+            aria-label="Toggle theme"
           >
-            <span class="relative my-[6px] block h-[2px] w-[30px] bg-white"></span>
-            <span class="relative my-[6px] block h-[2px] w-[30px] bg-white"></span>
-            <span class="relative my-[6px] block h-[2px] w-[30px] bg-white"></span>
+            <svg class="w-5 h-5 text-gray-600 dark:text-gray-300" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+            </svg>
           </button>
 
-          <nav
-            id="navbarCollapse"
-            class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg dark:bg-dark-2 lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:px-4 lg:py-0 lg:shadow-none dark:lg:bg-transparent xl:px-6"
+          <!-- Mobile Menu Toggle -->
+          <button
+            id="navbarToggler"
+            class="block rounded-lg px-3 py-2 ring-primary focus:ring-2 lg:hidden"
           >
-            <ul class="block lg:flex 2xl:ml-20">
-              <li class="relative group">
-                <a
-                  href="#home"
-                  class="flex py-2 mx-8 text-base font-medium ud-menu-scroll text-dark group-hover:text-blue-800 lg:ml-7 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 xl:ml-10"
-                >
-                  Home
-                </a>
-              </li>
-              <li class="relative group">
-                <a
-                  href="#about"
-                  class="flex py-2 mx-8 text-base font-medium ud-menu-scroll text-dark group-hover:text-blue-800 lg:ml-7 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 xl:ml-10"
-                >
-                  About
-                </a>
-              </li>
-              <li class="relative group">
-                <a
-                  href="#education"
-                  class="flex py-2 mx-8 text-base font-medium ud-menu-scroll text-dark group-hover:text-blue-800 lg:ml-7 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 xl:ml-10"
-                >
-                  Education & Experience
-                </a>
-              </li>
-              <li class="relative group">
-                <a
-                  href="#projects"
-                  class="flex py-2 mx-8 text-base font-medium ud-menu-scroll text-dark group-hover:text-blue-800 lg:ml-7 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 xl:ml-10"
-                >
-                  Projects
-                </a>
-              </li>
-              <li class="relative group">
-                <a
-                  href="#Publication"
-                  class="flex py-2 mx-8 text-base font-medium ud-menu-scroll text-dark group-hover:text-blue-800 lg:ml-7 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 xl:ml-10"
-                >
-                  Publications
-                </a>
-              </li>
-              <li class="relative group">
-                <a
-                  href="#contact"
-                  class="flex py-2 mx-8 text-base font-medium ud-menu-scroll text-dark group-hover:text-blue-800 lg:ml-7 lg:mr-0 lg:inline-flex lg:px-0 lg:py-6 xl:ml-10"
-                >
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </nav>
-
+            <span class="relative my-1 block h-0.5 w-6 bg-gray-600 transition-all duration-300"></span>
+            <span class="relative my-1 block h-0.5 w-6 bg-gray-600 transition-all duration-300"></span>
+            <span class="relative my-1 block h-0.5 w-6 bg-gray-600 transition-all duration-300"></span>
+          </button>
         </div>
+
+        <nav
+          id="navbarCollapse"
+          class="absolute right-4 top-full hidden w-full max-w-[280px] rounded-xl bg-white py-6 shadow-xl dark:bg-dark-2 lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:px-4 lg:py-0 lg:shadow-none dark:lg:bg-transparent xl:px-6"
+        >
+          <ul class="block lg:flex lg:space-x-8 xl:space-x-12">
+            <li class="relative group">
+              <a
+                href="#home"
+                class="flex py-3 mx-6 text-base font-medium ud-menu-scroll text-gray-700 hover:text-primary lg:mx-0 lg:inline-flex lg:px-0 lg:py-6 transition-colors"
+              >
+                Home
+              </a>
+            </li>
+            <li class="relative group">
+              <a
+                href="#about"
+                class="flex py-3 mx-6 text-base font-medium ud-menu-scroll text-gray-700 hover:text-primary lg:mx-0 lg:inline-flex lg:px-0 lg:py-6 transition-colors"
+              >
+                About
+              </a>
+            </li>
+            <li class="relative group">
+              <a
+                href="#education"
+                class="flex py-3 mx-6 text-base font-medium ud-menu-scroll text-gray-700 hover:text-primary lg:mx-0 lg:inline-flex lg:px-0 lg:py-6 transition-colors"
+              >
+                Education & Experience
+              </a>
+            </li>
+            <li class="relative group">
+              <a
+                href="#projects"
+                class="flex py-3 mx-6 text-base font-medium ud-menu-scroll text-gray-700 hover:text-primary lg:mx-0 lg:inline-flex lg:px-0 lg:py-6 transition-colors"
+              >
+                Projects
+              </a>
+            </li>
+            <li class="relative group">
+              <a
+                href="#Publication"
+                class="flex py-3 mx-6 text-base font-medium ud-menu-scroll text-gray-700 hover:text-primary lg:mx-0 lg:inline-flex lg:px-0 lg:py-6 transition-colors"
+              >
+                Publications
+              </a>
+            </li>
+            <li class="relative group">
+              <a
+                href="#contact"
+                class="flex py-3 mx-6 text-base font-medium ud-menu-scroll text-gray-700 hover:text-primary lg:mx-0 lg:inline-flex lg:px-0 lg:py-6 transition-colors"
+              >
+                Contact
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   </div>
 </div>
 <!-- ====== Navbar Section End -->
-  
 
 <!-- ====== Hero Section Start ====== -->
 <div
   id="home"
-  class="relative overflow-hidden bg-[#FFF2CC] py-[100px] md:py-[140px] lg:py-[180px]"
+  class="relative overflow-hidden bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 pt-32 pb-20 lg:pt-40 lg:pb-32"
 >
-  <div class="container mx-auto px-6">
-    <div class="flex flex-wrap items-center -mx-4">
+  <!-- Background Pattern -->
+  <div class="absolute inset-0 opacity-10">
+    <div class="absolute top-10 left-10 w-72 h-72 bg-blue-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse"></div>
+    <div class="absolute top-40 right-10 w-72 h-72 bg-purple-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-2000"></div>
+    <div class="absolute bottom-10 left-1/2 w-72 h-72 bg-indigo-300 rounded-full mix-blend-multiply filter blur-xl animate-pulse animation-delay-4000"></div>
+  </div>
 
+  <div class="container mx-auto px-6 relative z-10">
+    <div class="flex flex-wrap items-center -mx-4">
       <!-- Left Column (Text) -->
-      <div class="w-full md:w-1/2 px-4 mb-12 md:mb-0">
-        <div class="max-w-[640px]">
-          <p class="mt-4 mb-2 text-lg text-black text-left">Hello! I'm</p>
-          <h1 class="mb-8 text-4xl sm:text-5xl lg:text-4xl font-extrabold text-black leading-tight">
-            Dr. Samik Chowdhury
+      <div class="w-full lg:w-1/2 px-4 mb-12 lg:mb-0">
+        <div class="max-w-2xl">
+          <div class="inline-flex items-center px-4 py-2 bg-white/80 backdrop-blur-sm rounded-full text-sm font-medium text-gray-600 mb-6 shadow-sm">
+            <span class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></span>
+            Available for Research Collaboration
+          </div>
+          
+          <p class="text-lg text-gray-600 mb-4 font-medium">Hello! I'm</p>
+          <h1 class="mb-6 text-5xl lg:text-6xl font-bold text-gray-900 leading-tight font-playfair">
+            Dr. Samik <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Chowdhury</span>
           </h1>
-          <p class="mb-10 text-lg sm:text-xl text-black/90 leading-relaxed">
-            I work at the crossroads of entomology, climate-resilient agriculture, and grassroots extension. Over the past decade, my passion has been helping farmers of Northeast India manage pests sustainably while adapting to changing weather patterns. Let's build smarter, nature-aligned solutions together.
+          <p class="mb-8 text-xl text-gray-700 leading-relaxed">
+            I work at the crossroads of <span class="font-semibold text-blue-600">entomology</span>, <span class="font-semibold text-green-600">climate-resilient agriculture</span>, and <span class="font-semibold text-purple-600">grassroots extension</span>. Over the past decade, my passion has been helping farmers of Northeast India manage pests sustainably while adapting to changing weather patterns.
           </p>
-          <div class="flex flex-wrap gap-5">
+          
+          <div class="flex flex-wrap gap-4">
             <a
               href="#Publication"
-              class="inline-block rounded-md bg-white px-8 py-4 text-base font-semibold text-blue-600 shadow hover:bg-gray-100 transition"
+              class="inline-flex items-center px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
             >
+              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
               View Research
             </a>
             <a
               href="#contact"
-              class="inline-block rounded-md bg-blue-500 px-8 py-4 text-base font-semibold text-white hover:bg-blue-400 transition"
+              class="inline-flex items-center px-8 py-4 bg-white text-gray-700 font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 border border-gray-200"
             >
-              Contact
+              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"></path>
+              </svg>
+              Get in Touch
             </a>
           </div>
         </div>
       </div>
 
       <!-- Right Column (Image) -->
-      <div class="w-full md:w-1/2 px-4 flex justify-center">
-        <img
-          src="./assets/images/about/image.png"
-          alt="Dr. Samik Chowdhury"
-          class="w-[500px] h-[500px] md:w-[500px] md:h-[500px] rounded-xl object-cover shadow-lg"
-        />
+      <div class="w-full lg:w-1/2 px-4 flex justify-center">
+        <div class="relative">
+          <div class="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-3xl transform rotate-6 opacity-20"></div>
+          <img
+            src="./assets/images/about/image.png"
+            alt="Dr. Samik Chowdhury"
+            class="relative w-96 h-96 lg:w-[500px] lg:h-[500px] rounded-3xl object-cover shadow-2xl transform hover:scale-105 transition-transform duration-500"
+          />
+          <div class="absolute -bottom-6 -right-6 bg-white rounded-2xl p-4 shadow-xl">
+            <div class="flex items-center space-x-2">
+              <div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+              <span class="text-sm font-medium text-gray-700">11+ Years Experience</span>
+            </div>
+          </div>
+        </div>
       </div>
-
     </div>
   </div>
 </div>
 <!-- ====== Hero Section End ====== -->
 
-<section id="about" class="bg-gray-900 text-white pb-16 pt-24 lg:pb-24 lg:pt-32">
-  <div class="container px-4 mx-auto max-w-4xl">
+<!-- ====== About Section Start ====== -->
+<section id="about" class="py-20 lg:py-32 bg-white">
+  <div class="container px-4 mx-auto max-w-6xl">
     <!-- Section Heading -->
-    <div class="text-center mb-12">
-      <h2 class="text-4xl font-extrabold text-white leading-tight">About Me</h2>
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-4">
+        About Dr. Chowdhury
+      </div>
+      <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 leading-tight font-playfair mb-6">
+        Bridging Science & <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">Sustainability</span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Dedicated to transforming agricultural practices through innovative research and community engagement
+      </p>
     </div>
 
-    <!-- Content Flow -->
-    <div class="text-base text-gray-300 space-y-6">
-      <p>
-        I'm <strong>Dr. Samik Chowdhury</strong>, and for the past <strong>11+ years</strong>, I've been working at the intersection of agricultural entomology, integrated pest management (IPM), and agro-advisory services, with a deep focus on the farming systems of <strong>Northeast India</strong>.
-      </p>
-      <p>
-        I completed my M.Sc. in Agricultural Entomology and went on to pursue a Ph.D. in Integrated Pest Management, where my research focused on <strong>ecological engineering</strong>—using methods like habitat manipulation, trap cropping, and natural enemy conservation to build pest-resilient cropping systems.
-      </p>
-      <p>
-        Currently, I'm working as a <strong>Technical Officer</strong> under the <strong>Gramin Krishi Mausam Sewa (GKMS)</strong> at the ICAR Research Complex for NEH Region, Kolasib, Mizoram. My work involves integrating agrometeorological data with pest surveillance and crop phenology to provide timely, location-specific advisories that help farmers make informed decisions on crop and pest management.
-      </p>
+    <!-- Content Grid -->
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Left Column - Content -->
+      <div class="space-y-6">
+        <div class="prose prose-lg text-gray-700">
+          <p class="text-lg leading-relaxed">
+            I'm <strong class="text-gray-900">Dr. Samik Chowdhury</strong>, and for the past <strong class="text-blue-600">11+ years</strong>, I've been working at the intersection of agricultural entomology, integrated pest management (IPM), and agro-advisory services, with a deep focus on the farming systems of <strong class="text-green-600">Northeast India</strong>.
+          </p>
+          <p class="text-lg leading-relaxed">
+            I completed my M.Sc. in Agricultural Entomology and went on to pursue a Ph.D. in Integrated Pest Management, where my research focused on <strong class="text-purple-600">ecological engineering</strong>—using methods like habitat manipulation, trap cropping, and natural enemy conservation to build pest-resilient cropping systems.
+          </p>
+          <p class="text-lg leading-relaxed">
+            Currently, I'm working as a <strong class="text-indigo-600">Technical Officer</strong> under the <strong class="text-blue-600">Gramin Krishi Mausam Sewa (GKMS)</strong> at the ICAR Research Complex for NEH Region, Kolasib, Mizoram. My work involves integrating agrometeorological data with pest surveillance and crop phenology to provide timely, location-specific advisories.
+          </p>
+        </div>
+      </div>
 
-      <h3 class="text-xl font-semibold text-indigo-400 mt-10">Areas of Interest</h3>
-      <ul class="list-disc list-inside space-y-2">
-        <li>Insect ecology and population dynamics</li>
-        <li>Biological control and non-chemical pest regulation</li>
-        <li>Climate-pest interactions and forecasting models</li>
-        <li>Sustainable IPM strategies suited to hill agriculture</li>
-        <li>Field-level extension and farmer capacity building</li>
-      </ul>
-
-      <p>
-        My aim has always been to move beyond just academic knowledge and work closely with the farming community—translating research into real, practical outcomes that promote <strong>sustainable</strong> and <strong>climate-smart agriculture</strong>.
-      </p>
+      <!-- Right Column - Areas of Interest -->
+      <div class="bg-gradient-to-br from-blue-50 to-indigo-100 rounded-3xl p-8">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6 font-playfair">Areas of Expertise</h3>
+        <div class="space-y-4">
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-blue-500 rounded-full mt-3 flex-shrink-0"></div>
+            <p class="text-gray-700 font-medium">Insect ecology and population dynamics</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-green-500 rounded-full mt-3 flex-shrink-0"></div>
+            <p class="text-gray-700 font-medium">Biological control and non-chemical pest regulation</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-purple-500 rounded-full mt-3 flex-shrink-0"></div>
+            <p class="text-gray-700 font-medium">Climate-pest interactions and forecasting models</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-indigo-500 rounded-full mt-3 flex-shrink-0"></div>
+            <p class="text-gray-700 font-medium">Sustainable IPM strategies suited to hill agriculture</p>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="w-2 h-2 bg-orange-500 rounded-full mt-3 flex-shrink-0"></div>
+            <p class="text-gray-700 font-medium">Field-level extension and farmer capacity building</p>
+          </div>
+        </div>
+        
+        <div class="mt-8 p-4 bg-white rounded-xl shadow-sm">
+          <p class="text-gray-700 italic">
+            "My aim has always been to move beyond just academic knowledge and work closely with the farming community—translating research into real, practical outcomes that promote <strong class="text-green-600">sustainable</strong> and <strong class="text-blue-600">climate-smart agriculture</strong>."
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-
+<!-- ====== About Section End ====== -->
 
 <!-- ====== Education & Experience Section Start ====== -->
-<section id="education" class="bg-gray-800 py-20">
+<section id="education" class="py-20 lg:py-32 bg-gradient-to-br from-gray-50 to-blue-50">
   <div class="container mx-auto px-4">
     <!-- Section Heading -->
-    <div class="text-center mb-12">
-      <h2 class="text-4xl font-bold text-white">Education & Experience</h2>
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 bg-indigo-100 text-indigo-600 rounded-full text-sm font-medium mb-4">
+        Academic Journey
+      </div>
+      <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 font-playfair mb-6">
+        Education & <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Experience</span>
+      </h2>
     </div>
 
-    <div class="flex flex-wrap -mx-4">
+    <div class="grid lg:grid-cols-2 gap-12">
       <!-- Education -->
-      <div class="w-full md:w-1/2 px-4 mb-10 md:mb-0">
-        <h3 class="text-2xl font-bold text-indigo-600 mb-6">Education</h3>
-        <div class="relative space-y-8 pl-6">
-          <!-- Vertical line -->
-          <span class="absolute top-0 left-2 w-1 h-full bg-indigo-100 rounded-full"></span>
-
+      <div class="bg-white rounded-3xl p-8 shadow-xl">
+        <h3 class="text-2xl font-bold text-gray-900 mb-8 font-playfair flex items-center">
+          <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+            <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
+            </svg>
+          </div>
+          Education
+        </h3>
+        <div class="space-y-6">
           <!-- Ph.D. -->
-          <div class="group relative bg-gray-800 p-5 rounded-xl shadow hover:shadow-lg transition duration-300">
-            <div class="absolute -left-4 top-4 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center text-sm font-bold transition transform group-hover:scale-110 group-hover:rotate-6">
-              ✓
+          <div class="relative pl-8 pb-6 border-l-2 border-blue-200">
+            <div class="absolute -left-2 top-0 w-4 h-4 bg-blue-600 rounded-full"></div>
+            <div class="bg-blue-50 rounded-xl p-4">
+              <h4 class="text-lg font-semibold text-gray-900">Ph.D. in Agricultural Entomology</h4>
+              <p class="text-blue-600 font-medium">Integrated Pest Management • 2023</p>
             </div>
-            <h4 class="text-lg font-semibold text-white">Ph.D. in Agricultural Entomology</h4>
-            <p class="text-gray-400">Integrated Pest Management, 2023</p>
           </div>
 
           <!-- NET Qualified -->
-          <div class="group relative bg-gray-800 p-5 rounded-xl shadow hover:shadow-lg transition duration-300">
-            <div class="absolute -left-4 top-4 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center text-sm font-bold transition transform group-hover:scale-110 group-hover:rotate-6">
-              ✓
+          <div class="relative pl-8 pb-6 border-l-2 border-blue-200">
+            <div class="absolute -left-2 top-0 w-4 h-4 bg-green-600 rounded-full"></div>
+            <div class="bg-green-50 rounded-xl p-4">
+              <h4 class="text-lg font-semibold text-gray-900">NET Qualified</h4>
+              <p class="text-green-600 font-medium">ASRB, ICAR • 2013</p>
             </div>
-            <h4 class="text-lg font-semibold text-white">NET Qualified</h4>
-            <p class="text-gray-400">ASRB, ICAR, 2013</p>
           </div>
 
           <!-- M.Sc. -->
-          <div class="group relative bg-gray-800 p-5 rounded-xl shadow hover:shadow-lg transition duration-300">
-            <div class="absolute -left-4 top-4 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center text-sm font-bold transition transform group-hover:scale-110 group-hover:rotate-6">
-              ✓
+          <div class="relative pl-8 pb-6 border-l-2 border-blue-200">
+            <div class="absolute -left-2 top-0 w-4 h-4 bg-purple-600 rounded-full"></div>
+            <div class="bg-purple-50 rounded-xl p-4">
+              <h4 class="text-lg font-semibold text-gray-900">M.Sc. in Agricultural Entomology</h4>
+              <p class="text-purple-600 font-medium">2011</p>
             </div>
-            <h4 class="text-lg font-semibold text-white">M.Sc. in Agricultural Entomology</h4>
-            <p class="text-gray-400">2011</p>
           </div>
 
           <!-- JRF -->
-          <div class="group relative bg-gray-800 p-5 rounded-xl shadow hover:shadow-lg transition duration-300">
-            <div class="absolute -left-4 top-4 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center text-sm font-bold transition transform group-hover:scale-110 group-hover:rotate-6">
-              ✓
+          <div class="relative pl-8 pb-6 border-l-2 border-blue-200">
+            <div class="absolute -left-2 top-0 w-4 h-4 bg-indigo-600 rounded-full"></div>
+            <div class="bg-indigo-50 rounded-xl p-4">
+              <h4 class="text-lg font-semibold text-gray-900">JRF (ICAR)</h4>
+              <p class="text-indigo-600 font-medium">ICAR • 2009</p>
             </div>
-            <h4 class="text-lg font-semibold text-white">JRF (ICAR)</h4>
-            <p class="text-gray-400">ICAR, 2009</p>
           </div>
 
           <!-- B.Sc. -->
-          <div class="group relative bg-gray-800 p-5 rounded-xl shadow hover:shadow-lg transition duration-300">
-            <div class="absolute -left-4 top-4 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center text-sm font-bold transition transform group-hover:scale-110 group-hover:rotate-6">
-              ✓
+          <div class="relative pl-8">
+            <div class="absolute -left-2 top-0 w-4 h-4 bg-orange-600 rounded-full"></div>
+            <div class="bg-orange-50 rounded-xl p-4">
+              <h4 class="text-lg font-semibold text-gray-900">B.Sc. in Agriculture</h4>
+              <p class="text-orange-600 font-medium">2009</p>
             </div>
-            <h4 class="text-lg font-semibold text-white">B.Sc. in Agriculture</h4>
-            <p class="text-gray-400">2009</p>
           </div>
         </div>
       </div>
 
       <!-- Experience -->
-      <div class="w-full md:w-1/2 px-4">
-        <h3 class="text-2xl font-bold text-indigo-600 mb-6">Experience</h3>
-        <div class="relative space-y-8 pl-6">
-          <!-- Vertical line -->
-          <span class="absolute top-0 left-2 w-1 h-full bg-indigo-100 rounded-full"></span>
-
+      <div class="bg-white rounded-3xl p-8 shadow-xl">
+        <h3 class="text-2xl font-bold text-gray-900 mb-8 font-playfair flex items-center">
+          <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+            <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v3.57A22.952 22.952 0 0110 13a22.95 22.95 0 01-8-1.43V8a2 2 0 012-2h2zm2-1a1 1 0 011-1h2a1 1 0 011 1v1H8V5zm1 5a1 1 0 011-1h.01a1 1 0 110 2H10a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+              <path d="M2 13.692V16a2 2 0 002 2h12a2 2 0 002-2v-2.308A24.974 24.974 0 0110 15c-2.796 0-5.487-.46-8-1.308z"></path>
+            </svg>
+          </div>
+          Experience
+        </h3>
+        <div class="space-y-6">
           <!-- Technical Officer -->
-          <div class="group relative bg-gray-800 p-5 rounded-xl shadow hover:shadow-lg transition duration-300">
-            <div class="absolute -left-4 top-4 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center text-sm font-bold transition transform group-hover:scale-110 group-hover:rotate-6">
-              ✓
+          <div class="relative pl-8 pb-6 border-l-2 border-green-200">
+            <div class="absolute -left-2 top-0 w-4 h-4 bg-green-600 rounded-full"></div>
+            <div class="bg-green-50 rounded-xl p-4">
+              <h4 class="text-lg font-semibold text-gray-900">Technical Officer (GKMS)</h4>
+              <p class="text-green-600 font-medium mb-2">2014 – Present</p>
+              <p class="text-gray-600 text-sm">ICAR, Research Complex for NEH Region, Mizoram Centre, Kolasib</p>
             </div>
-            <h4 class="text-lg font-semibold text-white">Technical Officer (GKMS)</h4>
-            <p class="text-gray-400">
-              ICAR, Research Complex for NEH Region, Mizoram Centre, Kolasib<br>
-              2014 – Present
-            </p>
           </div>
 
           <!-- Research Associate -->
-          <div class="group relative bg-gray-800 p-5 rounded-xl shadow hover:shadow-lg transition duration-300">
-            <div class="absolute -left-4 top-4 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center text-sm font-bold transition transform group-hover:scale-110 group-hover:rotate-6">
-              ✓
+          <div class="relative pl-8 pb-6 border-l-2 border-green-200">
+            <div class="absolute -left-2 top-0 w-4 h-4 bg-blue-600 rounded-full"></div>
+            <div class="bg-blue-50 rounded-xl p-4">
+              <h4 class="text-lg font-semibold text-gray-900">Research Associate</h4>
+              <p class="text-blue-600 font-medium mb-2">2012 – 2014</p>
+              <p class="text-gray-600 text-sm">ICAR, Research Center for NEH Region, Umiam, Meghalaya</p>
             </div>
-            <h4 class="text-lg font-semibold text-white">Research Associate</h4>
-            <p class="text-gray-400">
-              ICAR, Research Center for NEH Region, Umiam, Meghalaya<br>
-              2012 – 2014
-            </p>
           </div>
 
           <!-- SRF -->
-          <div class="group relative bg-gray-800 p-5 rounded-xl shadow hover:shadow-lg transition duration-300">
-            <div class="absolute -left-4 top-4 w-8 h-8 bg-indigo-600 text-white rounded-full flex items-center justify-center text-sm font-bold transition transform group-hover:scale-110 group-hover:rotate-6">
-              ✓
+          <div class="relative pl-8">
+            <div class="absolute -left-2 top-0 w-4 h-4 bg-purple-600 rounded-full"></div>
+            <div class="bg-purple-50 rounded-xl p-4">
+              <h4 class="text-lg font-semibold text-gray-900">Senior Research Fellow</h4>
+              <p class="text-purple-600 font-medium mb-2">2011 – 2012</p>
+              <p class="text-gray-600 text-sm">ICAR, Research Center for NEH Region, Umiam, Meghalaya</p>
             </div>
-            <h4 class="text-lg font-semibold text-white">Senior Research Fellow</h4>
-            <p class="text-gray-400">
-              ICAR, Research Center for NEH Region, Umiam, Meghalaya<br>
-              2011 – 2012
-            </p>
           </div>
         </div>
       </div>
@@ -324,469 +411,625 @@
 </section>
 <!-- ====== Education & Experience Section End ====== -->
 
-<section id="projects" class="py-16 bg-gray-50">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
+<!-- ====== Projects Section Start ====== -->
+<section id="projects" class="py-20 lg:py-32 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Heading -->
-    <div class="text-center mb-12">
-      <h2 class="text-4xl font-bold text-gray-800">Projects</h2>
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 bg-green-100 text-green-600 rounded-full text-sm font-medium mb-4">
+        Research Portfolio
+      </div>
+      <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 font-playfair mb-6">
+        Research <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-600 to-blue-600">Projects</span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Collaborative initiatives driving sustainable agricultural innovation across Northeast India
+      </p>
     </div>
 
-    <!-- Externally Funded Projects Table -->
-    <div class="mb-12">
-      <h3 class="text-2xl font-semibold text-gray-700 mb-4">Externally Funded Projects</h3>
-      <div class="overflow-x-auto bg-white rounded-2xl shadow-lg">
-        <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gradient-to-r from-blue-100 via-blue-50 to-blue-100">
-            <tr>
-              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Project Title</th>
-              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Description</th>
-              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Funding Agency</th>
-              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Year of Completion</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-200">
-            <tr class="hover:bg-blue-100/60 transition-all duration-300 ease-in-out">
-              <td class="px-6 py-4 text-sm font-medium text-gray-900">Seed Village Programme</td>
-              <td class="px-6 py-4 text-sm text-gray-700">Community-based initiative to promote seed self-sufficiency, varietal purity, and decentralized quality seed production.</td>
-              <td class="px-6 py-4 text-sm text-gray-700">ICAR</td>
-              <td class="px-6 py-4 text-sm text-gray-700">2019</td>
-            </tr>
-            <tr class="hover:bg-blue-100/60 transition-all duration-300 ease-in-out">
-              <td class="px-6 py-4 text-sm font-medium text-gray-900">Improved Maize Technology in NEH</td>
-              <td class="px-6 py-4 text-sm text-gray-700">Demonstration and dissemination of improved maize hybrids and location-specific agronomic practices across NEH states.</td>
-              <td class="px-6 py-4 text-sm text-gray-700">ICAR</td>
-              <td class="px-6 py-4 text-sm text-gray-700">2021</td>
-            </tr>
-            <tr class="hover:bg-blue-100/60 transition-all duration-300 ease-in-out">
-              <td class="px-6 py-4 text-sm font-medium text-gray-900">Soil Moisture Deficit Study in Maize</td>
-              <td class="px-6 py-4 text-sm text-gray-700">Study to assess the relationship between soil moisture stress and pest incidence, crop phenology, and yield impact in maize systems.</td>
-              <td class="px-6 py-4 text-sm text-gray-700">ICAR</td>
-              <td class="px-6 py-4 text-sm text-gray-700">2021</td>
-            </tr>
-          </tbody>
-        </table>
+    <!-- Externally Funded Projects -->
+    <div class="mb-16">
+      <h3 class="text-2xl font-bold text-gray-900 mb-8 flex items-center">
+        <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+          <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"></path>
+            <path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"></path>
+          </svg>
+        </div>
+        Externally Funded Projects
+      </h3>
+      <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-3xl p-8 shadow-xl">
+        <div class="overflow-x-auto">
+          <table class="min-w-full">
+            <thead>
+              <tr class="border-b border-blue-200">
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Project Title</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Description</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Funding Agency</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Year</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-blue-100">
+              <tr class="hover:bg-white/50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-900">Seed Village Programme</td>
+                <td class="px-6 py-4 text-sm text-gray-700">Community-based initiative to promote seed self-sufficiency, varietal purity, and decentralized quality seed production.</td>
+                <td class="px-6 py-4 text-sm text-blue-600 font-medium">ICAR</td>
+                <td class="px-6 py-4 text-sm text-gray-700">2019</td>
+              </tr>
+              <tr class="hover:bg-white/50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-900">Improved Maize Technology in NEH</td>
+                <td class="px-6 py-4 text-sm text-gray-700">Demonstration and dissemination of improved maize hybrids and location-specific agronomic practices across NEH states.</td>
+                <td class="px-6 py-4 text-sm text-blue-600 font-medium">ICAR</td>
+                <td class="px-6 py-4 text-sm text-gray-700">2021</td>
+              </tr>
+              <tr class="hover:bg-white/50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-900">Soil Moisture Deficit Study in Maize</td>
+                <td class="px-6 py-4 text-sm text-gray-700">Study to assess the relationship between soil moisture stress and pest incidence, crop phenology, and yield impact in maize systems.</td>
+                <td class="px-6 py-4 text-sm text-blue-600 font-medium">ICAR</td>
+                <td class="px-6 py-4 text-sm text-gray-700">2021</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
-    <!-- Inter-Institutional Projects Table -->
+    <!-- Inter-Institutional Projects -->
     <div>
-      <h3 class="text-2xl font-semibold text-gray-700 mb-4">Inter-Institutional Projects</h3>
-      <div class="overflow-x-auto bg-white rounded-2xl shadow-lg">
-        <table class="min-w-full divide-y divide-gray-200">
-          <thead class="bg-gradient-to-r from-green-100 via-green-50 to-green-100">
-            <tr>
-              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Project Title</th>
-              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Description</th>
-              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Collaborating Institute</th>
-              <th class="px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Year of Completion</th>
-            </tr>
-          </thead>
-          <tbody class="divide-y divide-gray-200">
-            <tr class="hover:bg-green-100/60 transition-all duration-300 ease-in-out">
-              <td class="px-6 py-4 text-sm font-medium text-gray-900">Shading Effect of Cucurbitaceous Crops</td>
-              <td class="px-6 py-4 text-sm text-gray-700">Collaborative field study to evaluate how shading from cucurbit crops influences microclimate, pest populations, and yield performance.</td>
-              <td class="px-6 py-4 text-sm text-gray-700">ICAR</td>
-              <td class="px-6 py-4 text-sm text-gray-700">2014</td>
-            </tr>
-            <tr class="hover:bg-green-100/60 transition-all duration-300 ease-in-out">
-              <td class="px-6 py-4 text-sm font-medium text-gray-900">Temperature Tolerant Rice Varieties</td>
-              <td class="px-6 py-4 text-sm text-gray-700">Assessment of rice genotypes for thermal tolerance under rising temperature regimes, in partnership with breeding and agromet teams.</td>
-              <td class="px-6 py-4 text-sm text-gray-700">ICAR</td>
-              <td class="px-6 py-4 text-sm text-gray-700">2014</td>
-            </tr>
-          </tbody>
-        </table>
+      <h3 class="text-2xl font-bold text-gray-900 mb-8 flex items-center">
+        <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+          <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"></path>
+            <path d="M6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
+          </svg>
+        </div>
+        Inter-Institutional Projects
+      </h3>
+      <div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-3xl p-8 shadow-xl">
+        <div class="overflow-x-auto">
+          <table class="min-w-full">
+            <thead>
+              <tr class="border-b border-green-200">
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Project Title</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Description</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Collaborating Institute</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Year</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-green-100">
+              <tr class="hover:bg-white/50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-900">Shading Effect of Cucurbitaceous Crops</td>
+                <td class="px-6 py-4 text-sm text-gray-700">Collaborative field study to evaluate how shading from cucurbit crops influences microclimate, pest populations, and yield performance.</td>
+                <td class="px-6 py-4 text-sm text-green-600 font-medium">ICAR</td>
+                <td class="px-6 py-4 text-sm text-gray-700">2014</td>
+              </tr>
+              <tr class="hover:bg-white/50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-900">Temperature Tolerant Rice Varieties</td>
+                <td class="px-6 py-4 text-sm text-gray-700">Assessment of rice genotypes for thermal tolerance under rising temperature regimes, in partnership with breeding and agromet teams.</td>
+                <td class="px-6 py-4 text-sm text-green-600 font-medium">ICAR</td>
+                <td class="px-6 py-4 text-sm text-gray-700">2014</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-
   </div>
 </section>
+<!-- ====== Projects Section End ====== -->
 
-<section id="Publication" class="py-16 bg-white">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-
+<!-- ====== Publications Section Start ====== -->
+<section id="Publication" class="py-20 lg:py-32 bg-gradient-to-br from-gray-50 to-blue-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <!-- Section Heading -->
-    <div class="text-center mb-12">
-      <h2 class="text-4xl font-bold text-gray-800">Publications</h2>
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm font-medium mb-4">
+        Academic Contributions
+      </div>
+      <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 font-playfair mb-6">
+        Research <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-600 to-blue-600">Publications</span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Peer-reviewed research, books, and extension materials advancing agricultural science
+      </p>
     </div>
 
-    <!-- Journal Articles Table -->
-    <div>
-      <h3 class="text-2xl font-semibold text-gray-700 mb-4">Journal Articles</h3>
-      <div class="overflow-x-auto bg-gray-50 rounded-2xl shadow-lg">
-        <table class="min-w-full divide-y divide-gray-200 table-fixed">
-          <thead class="bg-gradient-to-r from-purple-100 via-purple-50 to-purple-100">
-            <tr>
-              <th class="w-1/4 px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Title</th>
-              <th class="w-1/4 px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Journal</th>
-              <th class="w-1/4 px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Year</th>
-              <th class="w-1/4 px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Impact Factor</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr class="hover:bg-purple-100 transition duration-300 ease-in-out">
-              <td class="px-6 py-4 text-sm font-medium text-gray-900">Usability assessment of district level rainfall forecast in Mizoram</td>
-              <td class="px-6 py-4 text-sm text-gray-700">MAUSAM</td>
-              <td class="px-6 py-4 text-sm text-gray-700">2024</td>
-              <td class="px-6 py-4 text-sm text-gray-700">0.7</td>
-            </tr>
-            <tr class="hover:bg-purple-100 transition duration-300 ease-in-out">
-              <td class="px-6 py-4 text-sm font-medium text-gray-900">Shifts in wetness pattern and periodicity across Tripura state in northeast India</td>
-              <td class="px-6 py-4 text-sm text-gray-700">MAUSAM</td>
-              <td class="px-6 py-4 text-sm text-gray-700">2024</td>
-              <td class="px-6 py-4 text-sm text-gray-700">0.7</td>
-            </tr>
-            <tr class="hover:bg-purple-100 transition duration-300 ease-in-out">
-              <td class="px-6 py-4 text-sm font-medium text-gray-900">Molecular characterization, developmental biology, and life table of Micraspis discolor and its predatory potential against Aphis gossypii</td>
-              <td class="px-6 py-4 text-sm text-gray-700">Int. J. of Pest Management</td>
-              <td class="px-6 py-4 text-sm text-gray-700">2023</td>
-              <td class="px-6 py-4 text-sm text-gray-700">1.1</td>
-            </tr>
-            <tr class="hover:bg-purple-100 transition duration-300 ease-in-out">
-              <td class="px-6 py-4 text-sm font-medium text-gray-900">Harmonia sedecimnotata (F.): Predatory potential, biology, life table, molecular characterization, and field evaluation against Aphis gossypii Glover</td>
-              <td class="px-6 py-4 text-sm text-gray-700">Scientific Reports</td>
-              <td class="px-6 py-4 text-sm text-gray-700">2020</td>
-              <td class="px-6 py-4 text-sm text-gray-700">4.3</td>
-            </tr>
-          </tbody>
-        </table>
+    <!-- Journal Articles -->
+    <div class="mb-16">
+      <h3 class="text-2xl font-bold text-gray-900 mb-8 flex items-center">
+        <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
+          <svg class="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
+            <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path>
+          </svg>
+        </div>
+        Journal Articles
+      </h3>
+      <div class="bg-white rounded-3xl p-8 shadow-xl">
+        <div class="overflow-x-auto">
+          <table class="min-w-full">
+            <thead>
+              <tr class="border-b border-gray-200">
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Title</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Journal</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Year</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Impact Factor</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr class="hover:bg-purple-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-900">Usability assessment of district level rainfall forecast in Mizoram</td>
+                <td class="px-6 py-4 text-sm text-purple-600 font-medium">MAUSAM</td>
+                <td class="px-6 py-4 text-sm text-gray-700">2024</td>
+                <td class="px-6 py-4 text-sm text-gray-700">0.7</td>
+              </tr>
+              <tr class="hover:bg-purple-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-900">Shifts in wetness pattern and periodicity across Tripura state in northeast India</td>
+                <td class="px-6 py-4 text-sm text-purple-600 font-medium">MAUSAM</td>
+                <td class="px-6 py-4 text-sm text-gray-700">2024</td>
+                <td class="px-6 py-4 text-sm text-gray-700">0.7</td>
+              </tr>
+              <tr class="hover:bg-purple-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-900">Molecular characterization, developmental biology, and life table of Micraspis discolor and its predatory potential against Aphis gossypii</td>
+                <td class="px-6 py-4 text-sm text-purple-600 font-medium">Int. J. of Pest Management</td>
+                <td class="px-6 py-4 text-sm text-gray-700">2023</td>
+                <td class="px-6 py-4 text-sm text-gray-700">1.1</td>
+              </tr>
+              <tr class="hover:bg-purple-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-900">Harmonia sedecimnotata (F.): Predatory potential, biology, life table, molecular characterization, and field evaluation against Aphis gossypii Glover</td>
+                <td class="px-6 py-4 text-sm text-purple-600 font-medium">Scientific Reports</td>
+                <td class="px-6 py-4 text-sm text-gray-700">2020</td>
+                <td class="px-6 py-4 text-sm text-gray-700">4.3</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
 
-    <!-- Books & Chapters Table -->
-<div class="mt-16">
-  <h3 class="text-2xl font-semibold text-gray-700 mb-4">Books & Chapters</h3>
-  <div class="overflow-x-auto bg-gray-50 rounded-2xl shadow-lg">
-    <table class="min-w-full divide-y divide-gray-200 table-fixed">
-      <thead class="bg-gradient-to-r from-blue-100 via-blue-50 to-blue-100">
-        <tr>
-          <th class="w-1/5 px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Title</th>
-          <th class="w-1/5 px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Publisher</th>
-          <th class="w-1/5 px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Year</th>
-          <th class="w-1/5 px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">ISBN</th>
-          <th class="w-1/5 px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Summary</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="hover:bg-blue-100 transition duration-300 ease-in-out">
-          <td class="px-6 py-4 text-sm font-medium text-gray-900">
-            Multi-stakeholder Agro-advisory network: An efficient tool for promoting climate resilient agriculture in NE India
-          </td>
-          <td class="px-6 py-4 text-sm text-gray-700">ICAR RC NEH, Mizoram Centre, Kolasib</td>
-          <td class="px-6 py-4 text-sm text-gray-700">2023</td>
-          <td class="px-6 py-4 text-sm text-gray-700">978-93-5759-893-4</td>
-          <td class="px-6 py-4 text-sm text-gray-700">Connects farmers, scientists & institutions for climate-smart advisories in NE India.</td>
-        </tr>
-        <tr class="hover:bg-blue-100 transition duration-300 ease-in-out">
-          <td class="px-6 py-4 text-sm font-medium text-gray-900">
-            Potential high yielding maize composite lines for jhum agro-ecosystem in Mizoram
-          </td>
-          <td class="px-6 py-4 text-sm text-gray-700">ICAR RC NEH, Umiam</td>
-          <td class="px-6 py-4 text-sm text-gray-700">2022</td>
-          <td class="px-6 py-4 text-sm text-gray-700">978-93-5419-274-6</td>
-          <td class="px-6 py-4 text-sm text-gray-700">Promotes sustainable jhum cultivation with high-yielding maize varieties.</td>
-        </tr>
-        <tr class="hover:bg-blue-100 transition duration-300 ease-in-out">
-          <td class="px-6 py-4 text-sm font-medium text-gray-900">
-            Improving lowland rice productivity in Mizoram through tech demonstration & seed initiatives
-          </td>
-          <td class="px-6 py-4 text-sm text-gray-700">ICAR RC NEH, Umiam</td>
-          <td class="px-6 py-4 text-sm text-gray-700">2022</td>
-          <td class="px-6 py-4 text-sm text-gray-700">978-93-5445-702-9</td>
-          <td class="px-6 py-4 text-sm text-gray-700">Enhances rice productivity via localized tech demos for commercial seed production.</td>
-        </tr>
-      </tbody>
-    </table>
+    <!-- Books & Chapters -->
+    <div class="mb-16">
+      <h3 class="text-2xl font-bold text-gray-900 mb-8 flex items-center">
+        <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
+          <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M9 4.804A7.968 7.968 0 005.5 4c-1.255 0-2.443.29-3.5.804v10A7.969 7.969 0 015.5 14c1.669 0 3.218.51 4.5 1.385A7.962 7.962 0 0114.5 14c1.255 0 2.443.29 3.5.804v-10A7.968 7.968 0 0014.5 4c-1.255 0-2.443.29-3.5.804V12a1 1 0 11-2 0V4.804z"></path>
+          </svg>
+        </div>
+        Books & Chapters
+      </h3>
+      <div class="bg-white rounded-3xl p-8 shadow-xl">
+        <div class="overflow-x-auto">
+          <table class="min-w-full">
+            <thead>
+              <tr class="border-b border-gray-200">
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Title</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Publisher</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Year</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">ISBN</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Summary</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr class="hover:bg-blue-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-900">Multi-stakeholder Agro-advisory network: An efficient tool for promoting climate resilient agriculture in NE India</td>
+                <td class="px-6 py-4 text-sm text-blue-600 font-medium">ICAR RC NEH, Mizoram Centre, Kolasib</td>
+                <td class="px-6 py-4 text-sm text-gray-700">2023</td>
+                <td class="px-6 py-4 text-sm text-gray-700">978-93-5759-893-4</td>
+                <td class="px-6 py-4 text-sm text-gray-700">Connects farmers, scientists & institutions for climate-smart advisories in NE India.</td>
+              </tr>
+              <tr class="hover:bg-blue-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-900">Potential high yielding maize composite lines for jhum agro-ecosystem in Mizoram</td>
+                <td class="px-6 py-4 text-sm text-blue-600 font-medium">ICAR RC NEH, Umiam</td>
+                <td class="px-6 py-4 text-sm text-gray-700">2022</td>
+                <td class="px-6 py-4 text-sm text-gray-700">978-93-5419-274-6</td>
+                <td class="px-6 py-4 text-sm text-gray-700">Promotes sustainable jhum cultivation with high-yielding maize varieties.</td>
+              </tr>
+              <tr class="hover:bg-blue-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-900">Improving lowland rice productivity in Mizoram through tech demonstration & seed initiatives</td>
+                <td class="px-6 py-4 text-sm text-blue-600 font-medium">ICAR RC NEH, Umiam</td>
+                <td class="px-6 py-4 text-sm text-gray-700">2022</td>
+                <td class="px-6 py-4 text-sm text-gray-700">978-93-5445-702-9</td>
+                <td class="px-6 py-4 text-sm text-gray-700">Enhances rice productivity via localized tech demos for commercial seed production.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Extension Publications -->
+    <div class="mb-16">
+      <h3 class="text-2xl font-bold text-gray-900 mb-8 flex items-center">
+        <div class="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center mr-3">
+          <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M3 4a1 1 0 011-1h4a1 1 0 010 2H6.414l2.293 2.293a1 1 0 01-1.414 1.414L5 6.414V8a1 1 0 01-2 0V4zm9 1a1 1 0 010-2h4a1 1 0 011 1v4a1 1 0 01-2 0V6.414l-2.293 2.293a1 1 0 11-1.414-1.414L13.586 5H12zm-9 7a1 1 0 012 0v1.586l2.293-2.293a1 1 0 111.414 1.414L6.414 15H8a1 1 0 010 2H4a1 1 0 01-1-1v-4zm13-1a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 010-2h1.586l-2.293-2.293a1 1 0 111.414-1.414L15 13.586V12a1 1 0 011-1z" clip-rule="evenodd"></path>
+          </svg>
+        </div>
+        Extension Publications
+      </h3>
+      <div class="bg-white rounded-3xl p-8 shadow-xl">
+        <div class="overflow-x-auto">
+          <table class="min-w-full">
+            <thead>
+              <tr class="border-b border-gray-200">
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Title</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Type</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Year</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Language</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Summary</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr class="hover:bg-green-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-900">Climate Resilient Agricultural Technologies for Sustainable Farming in Mizoram</td>
+                <td class="px-6 py-4 text-sm text-green-600 font-medium">Technical Bulletin</td>
+                <td class="px-6 py-4 text-sm text-gray-700">2024</td>
+                <td class="px-6 py-4 text-sm text-gray-700">English & Regional</td>
+                <td class="px-6 py-4 text-sm text-gray-700">Promotes adaptive farming to reduce climate risk and increase resilience.</td>
+              </tr>
+              <tr class="hover:bg-green-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-900">Socio-Economic Development of Mizo Farmers through Integrated Farming System (IFS)</td>
+                <td class="px-6 py-4 text-sm text-green-600 font-medium">Technical Bulletin</td>
+                <td class="px-6 py-4 text-sm text-gray-700">2024</td>
+                <td class="px-6 py-4 text-sm text-gray-700">English</td>
+                <td class="px-6 py-4 text-sm text-gray-700">Enhances livelihoods through diversified, resource-efficient farming.</td>
+              </tr>
+              <tr class="hover:bg-green-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-900">Integrated Farming System (IFS) hmanga Mizo kuthnathawktute dawmkan dan</td>
+                <td class="px-6 py-4 text-sm text-green-600 font-medium">Technical Bulletin</td>
+                <td class="px-6 py-4 text-sm text-gray-700">2024</td>
+                <td class="px-6 py-4 text-sm text-gray-700">Mizo</td>
+                <td class="px-6 py-4 text-sm text-gray-700">IFS-a thil dangte hmangin a sum lakluhna leh a hmasawnna hman a hriat theih bawk.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Patents -->
+    <div class="mb-16">
+      <h3 class="text-2xl font-bold text-gray-900 mb-8 flex items-center">
+        <div class="w-8 h-8 bg-yellow-100 rounded-lg flex items-center justify-center mr-3">
+          <svg class="w-5 h-5 text-yellow-600" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z" clip-rule="evenodd"></path>
+          </svg>
+        </div>
+        Patents
+      </h3>
+      <div class="bg-white rounded-3xl p-8 shadow-xl">
+        <div class="overflow-x-auto">
+          <table class="min-w-full">
+            <thead>
+              <tr class="border-b border-gray-200">
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Title</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Year</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Status</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-900 uppercase tracking-wider">Description</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr class="hover:bg-yellow-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-900">Portable Smart Entomology Device for Pest Risk Analysis</td>
+                <td class="px-6 py-4 text-sm text-gray-700">2025</td>
+                <td class="px-6 py-4 text-sm text-yellow-600 font-medium">Filed</td>
+                <td class="px-6 py-4 text-sm text-gray-700">Portable tool using real-time data to predict pest outbreaks.</td>
+              </tr>
+              <tr class="hover:bg-yellow-50 transition-colors">
+                <td class="px-6 py-4 text-sm font-medium text-gray-900">Wearable Plant Bio-Tracker</td>
+                <td class="px-6 py-4 text-sm text-gray-700">2025</td>
+                <td class="px-6 py-4 text-sm text-yellow-600 font-medium">Filed</td>
+                <td class="px-6 py-4 text-sm text-gray-700">Sensor-based device for early detection of plant stress and diseases.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ResearchGate CTA -->
+    <div class="text-center bg-gradient-to-r from-blue-600 to-purple-600 rounded-3xl p-8 text-white">
+      <h3 class="text-2xl font-bold mb-4">Explore More Research</h3>
+      <p class="text-blue-100 mb-6 max-w-2xl mx-auto">
+        Curious to explore more research work, projects, and scientific collaborations? Visit my comprehensive research profile for detailed insights and ongoing projects.
+      </p>
+      <a
+        href="https://www.researchgate.net/profile/Samik-Chowdhury"
+        target="_blank"
+        class="inline-flex items-center px-8 py-4 bg-white text-blue-600 font-semibold rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+      >
+        <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd" d="M12.586 4.586a2 2 0 112.828 2.828l-3 3a2 2 0 01-2.828 0 1 1 0 00-1.414 1.414 4 4 0 005.656 0l3-3a4 4 0 00-5.656-5.656l-1.5 1.5a1 1 0 101.414 1.414l1.5-1.5zm-5 5a2 2 0 012.828 0 1 1 0 101.414-1.414 4 4 0 00-5.656 0l-3 3a4 4 0 105.656 5.656l1.5-1.5a1 1 0 10-1.414-1.414l-1.5 1.5a2 2 0 11-2.828-2.828l3-3z" clip-rule="evenodd"></path>
+        </svg>
+        Visit ResearchGate Profile
+      </a>
+    </div>
   </div>
-</div>
-
-<!-- Extension Publications Table -->
-<div class="mt-16">
-  <h3 class="text-2xl font-semibold text-gray-700 mb-4">Extension Publications</h3>
-  <div class="overflow-x-auto bg-gray-50 rounded-2xl shadow-lg">
-    <table class="min-w-full divide-y divide-gray-200 table-fixed">
-      <thead class="bg-gradient-to-r from-green-100 via-green-50 to-green-100">
-        <tr>
-          <th class="w-1/5 px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Title</th>
-          <th class="w-1/5 px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Type</th>
-          <th class="w-1/5 px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Year</th>
-          <th class="w-1/5 px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Language</th>
-          <th class="w-1/5 px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Summary</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="hover:bg-green-100 transition duration-300 ease-in-out">
-          <td class="px-6 py-4 text-sm font-medium text-gray-900">Climate Resilient Agricultural Technologies for Sustainable Farming in Mizoram</td>
-          <td class="px-6 py-4 text-sm text-gray-700">Technical Bulletin</td>
-          <td class="px-6 py-4 text-sm text-gray-700">2024</td>
-          <td class="px-6 py-4 text-sm text-gray-700">English & Regional</td>
-          <td class="px-6 py-4 text-sm text-gray-700">Promotes adaptive farming to reduce climate risk and increase resilience.</td>
-        </tr>
-        <tr class="hover:bg-green-100 transition duration-300 ease-in-out">
-          <td class="px-6 py-4 text-sm font-medium text-gray-900">Socio-Economic Development of Mizo Farmers through Integrated Farming System (IFS)</td>
-          <td class="px-6 py-4 text-sm text-gray-700">Technical Bulletin</td>
-          <td class="px-6 py-4 text-sm text-gray-700">2024</td>
-          <td class="px-6 py-4 text-sm text-gray-700">English</td>
-          <td class="px-6 py-4 text-sm text-gray-700">Enhances livelihoods through diversified, resource-efficient farming.</td>
-        </tr>
-        <tr class="hover:bg-green-100 transition duration-300 ease-in-out">
-          <td class="px-6 py-4 text-sm font-medium text-gray-900">Integrated Farming System (IFS) hmanga Mizo kuthnathawktute dawmkan dan</td>
-          <td class="px-6 py-4 text-sm text-gray-700">Technical Bulletin</td>
-          <td class="px-6 py-4 text-sm text-gray-700">2024</td>
-          <td class="px-6 py-4 text-sm text-gray-700">Mizo</td>
-          <td class="px-6 py-4 text-sm text-gray-700">IFS-a thil dangte hmangin a sum lakluhna leh a hmasawnna hman a hriat theih bawk.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- Patents Table -->
-<div class="mt-16">
-  <h3 class="text-2xl font-semibold text-gray-700 mb-4">Patents</h3>
-  <div class="overflow-x-auto bg-gray-50 rounded-2xl shadow-lg">
-    <table class="min-w-full divide-y divide-gray-200 table-fixed">
-      <thead class="bg-gradient-to-r from-yellow-100 via-yellow-50 to-yellow-100">
-        <tr>
-          <th class="w-1/4 px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Title</th>
-          <th class="w-1/4 px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Year</th>
-          <th class="w-1/4 px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Status</th>
-          <th class="w-1/4 px-6 py-4 text-left text-sm font-semibold text-gray-700 uppercase">Description</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr class="hover:bg-yellow-100 transition duration-300 ease-in-out">
-          <td class="px-6 py-4 text-sm font-medium text-gray-900">Portable Smart Entomology Device for Pest Risk Analysis</td>
-          <td class="px-6 py-4 text-sm text-gray-700">2025</td>
-          <td class="px-6 py-4 text-sm text-gray-700">Filed</td>
-          <td class="px-6 py-4 text-sm text-gray-700">Portable tool using real-time data to predict pest outbreaks.</td>
-        </tr>
-        <tr class="hover:bg-yellow-100 transition duration-300 ease-in-out">
-          <td class="px-6 py-4 text-sm font-medium text-gray-900">Wearable Plant Bio-Tracker</td>
-          <td class="px-6 py-4 text-sm text-gray-700">2025</td>
-          <td class="px-6 py-4 text-sm text-gray-700">Filed</td>
-          <td class="px-6 py-4 text-sm text-gray-700">Sensor-based device for early detection of plant stress and diseases.</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
-
-<!-- Minimalist ResearchGate CTA -->
-<div class="mt-12 text-center">
-  <p class="text-gray-700 text-base">
-    Curious to explore more research work, projects, and scientific collaborations?
-  </p>
-  <a
-    href="https://www.researchgate.net/profile/Samik-Chowdhury"
-    target="_blank"
-    class="inline-block mt-4 text-sm font-medium text-blue-700 border border-blue-700 px-5 py-2 rounded-full hover:bg-blue-700 hover:text-white transition-all duration-300"
-  >
-    Visit Dr. Samik Chowdhury's ResearchGate Profile →
-  </a>
-</div>
-
 </section>
+<!-- ====== Publications Section End ====== -->
 
-    <section class="bg-[#E9F9FF] py-20" id="contact">
-      <div class="max-w-7xl mx-auto flex flex-wrap lg:flex-nowrap px-6 md:px-12 items-start gap-12">
-        
-        <!-- Left Column -->
-        <div class="w-full lg:w-1/2 space-y-10">
-          <h2 class="text-3xl md:text-4xl font-semibold text-blue-700">
-            Let's <br /> Connect.
-          </h2>
+<!-- ====== Contact Section Start ====== -->
+<section class="py-20 lg:py-32 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50" id="contact">
+  <div class="max-w-7xl mx-auto px-6 md:px-12">
+    <!-- Section Heading -->
+    <div class="text-center mb-16">
+      <div class="inline-flex items-center px-4 py-2 bg-blue-100 text-blue-600 rounded-full text-sm font-medium mb-4">
+        Get In Touch
+      </div>
+      <h2 class="text-4xl lg:text-5xl font-bold text-gray-900 font-playfair mb-6">
+        Let's <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">Connect</span>
+      </h2>
+      <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+        Ready to collaborate on sustainable agriculture research or discuss innovative farming solutions?
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <!-- Left Column - Contact Info -->
+      <div class="space-y-8">
+        <div class="bg-white rounded-3xl p-8 shadow-xl">
+          <h3 class="text-2xl font-bold text-gray-900 mb-6 font-playfair">Contact Information</h3>
           
           <!-- Location -->
-          <div class="flex items-start space-x-4">
-            <div class="text-blue-600 mt-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+          <div class="flex items-start space-x-4 mb-6">
+            <div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5 14.5 7.62 14.5 9 13.38 11.5 12 11.5z"/>
               </svg>
             </div>
             <div>
-              <h4 class="text-lg font-semibold text-gray-900">My Location</h4>
-              <p class="text-gray-600 text-sm">
-                Kolasib, Mizoram
-              </p>
+              <h4 class="text-lg font-semibold text-gray-900 mb-1">Location</h4>
+              <p class="text-gray-600">Kolasib, Mizoram, India</p>
             </div>
           </div>
           
           <!-- Email -->
           <div class="flex items-start space-x-4">
-            <div class="text-blue-600 mt-1">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+            <div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+              <svg class="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
               </svg>
             </div>
             <div>
-              <h4 class="text-lg font-semibold text-gray-900">My Emails</h4>
-              <p class="text-gray-600 text-sm">samikchowdhury33@gmail.com</p>
+              <h4 class="text-lg font-semibold text-gray-900 mb-1">Email</h4>
+              <p class="text-gray-600">samikchowdhury33@gmail.com</p>
             </div>
           </div>
         </div>
-    
-<!-- Right Column (Contact Form) -->
-<div class="w-full lg:w-1/2 bg-white shadow-xl rounded-xl p-8 md:p-12 space-y-6">
-  <h3 class="text-2xl font-semibold text-gray-900">Send me a Message</h3>
-  <form 
-    action="https://formsubmit.co/samikchowdhury33@gmail.com" 
-    method="POST" 
-    class="space-y-6"
-  >
-    <!-- Hidden input for redirect after submission -->
-    <input type="hidden" name="_redirect" value="https://samikchowdhury.info" />
-    
-    <!-- Full Name -->
-    <div>
-      <label class="block text-sm text-gray-600 mb-1">Full Name*</label>
-      <input type="text" name="name" required placeholder="Rahul Sharma" 
-        class="w-full border-b border-gray-300 focus:border-blue-600 outline-none py-2 bg-transparent placeholder:text-gray-400" />
-    </div>
 
-    <!-- Email -->
-    <div>
-      <label class="block text-sm text-gray-600 mb-1">Email*</label>
-      <input type="email" name="email" required placeholder="example@domain.in" 
-        class="w-full border-b border-gray-300 focus:border-blue-600 outline-none py-2 bg-transparent placeholder:text-gray-400" />
-    </div>
-
-    <!-- Phone -->
-    <div>
-      <label class="block text-sm text-gray-600 mb-1">Phone*</label>
-      <input type="text" name="phone" required placeholder="+91 98765 43210" 
-        class="w-full border-b border-gray-300 focus:border-blue-600 outline-none py-2 bg-transparent placeholder:text-gray-400" />
-    </div>
-
-    <!-- Message -->
-    <div>
-      <label class="block text-sm text-gray-600 mb-1">Message*</label>
-      <textarea name="message" required rows="2" placeholder="Write Message" 
-        class="w-full border-b border-gray-300 focus:border-blue-600 outline-none py-2 resize-none bg-transparent placeholder:text-gray-400"></textarea>
-    </div>
-
-    <!-- Submit Button -->
-    <div>
-      <button type="submit" class="bg-blue-700 text-white px-6 py-2 rounded-md hover:bg-blue-800 transition-all">
-        Send
-      </button>
-    </div>
-  </form>
-</div>
-        
+        <!-- Social Links -->
+        <div class="bg-white rounded-3xl p-8 shadow-xl">
+          <h3 class="text-xl font-bold text-gray-900 mb-6">Professional Networks</h3>
+          <div class="space-y-4">
+            <a href="https://in.linkedin.com/in/samik-chowdhury-1a785061" target="_blank" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-blue-50 transition-colors group">
+              <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center group-hover:bg-blue-200 transition-colors">
+                <svg class="w-5 h-5 text-blue-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </div>
+              <span class="font-medium text-gray-700 group-hover:text-blue-600 transition-colors">LinkedIn</span>
+            </a>
+            <a href="https://www.researchgate.net/profile/Samik-Chowdhury" target="_blank" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-green-50 transition-colors group">
+              <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center group-hover:bg-green-200 transition-colors">
+                <svg class="w-5 h-5 text-green-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M19.586 0H4.414C1.977 0 0 1.977 0 4.414v15.172C0 22.023 1.977 24 4.414 24h15.172C22.023 24 24 22.023 24 19.586V4.414C24 1.977 22.023 0 19.586 0z"/>
+                </svg>
+              </div>
+              <span class="font-medium text-gray-700 group-hover:text-green-600 transition-colors">ResearchGate</span>
+            </a>
+            <a href="https://icarneh.academia.edu/SamikChowdhury" target="_blank" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-purple-50 transition-colors group">
+              <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center group-hover:bg-purple-200 transition-colors">
+                <svg class="w-5 h-5 text-purple-600" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
+                </svg>
+              </div>
+              <span class="font-medium text-gray-700 group-hover:text-purple-600 transition-colors">Academia</span>
+            </a>
+          </div>
+        </div>
       </div>
-    </section>
-    
-  <!-- ====== Footer Section Start -->
-<footer class="bg-[#090E34] text-gray-400 text-sm pt-10">
+
+      <!-- Right Column - Contact Form -->
+      <div class="bg-white rounded-3xl p-8 shadow-xl">
+        <h3 class="text-2xl font-bold text-gray-900 mb-6 font-playfair">Send a Message</h3>
+        <form 
+          action="https://formsubmit.co/samikchowdhury33@gmail.com" 
+          method="POST" 
+          class="space-y-6"
+        >
+          <!-- Hidden input for redirect after submission -->
+          <input type="hidden" name="_redirect" value="https://samikchowdhury.info" />
+          
+          <!-- Full Name -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Full Name*</label>
+            <input 
+              type="text" 
+              name="name" 
+              required 
+              placeholder="Enter your full name" 
+              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-300"
+            />
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Email Address*</label>
+            <input 
+              type="email" 
+              name="email" 
+              required 
+              placeholder="Enter your email address" 
+              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-300"
+            />
+          </div>
+
+          <!-- Phone -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Phone Number*</label>
+            <input 
+              type="text" 
+              name="phone" 
+              required 
+              placeholder="Enter your phone number" 
+              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-300"
+            />
+          </div>
+
+          <!-- Message -->
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-2">Message*</label>
+            <textarea 
+              name="message" 
+              required 
+              rows="4" 
+              placeholder="Tell me about your research interests or collaboration ideas..." 
+              class="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none resize-none transition-all duration-300"
+            ></textarea>
+          </div>
+
+          <!-- Submit Button -->
+          <button 
+            type="submit" 
+            class="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-4 px-8 rounded-xl shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ====== Contact Section End ====== -->
+
+<!-- ====== Footer Section Start ====== -->
+<footer class="bg-gray-900 text-gray-300 py-12">
   <div class="container mx-auto px-4">
     <!-- Top Row -->
-    <div class="flex flex-col md:flex-row md:justify-between items-center space-y-4 md:space-y-0 pb-6 border-b border-gray-600/40">
-      <!-- Social Links -->
-      <div class="flex flex-wrap justify-center md:justify-start space-x-4">
-        <a href="https://in.linkedin.com/in/samik-chowdhury-1a785061" target="_blank" class="hover:underline">LinkedIn</a>
-        <span>|</span>
-        <a href="https://www.researchgate.net/profile/Samik-Chowdhury" target="_blank" class="hover:underline">ResearchGate</a>
-        <span>|</span>
-        <a href="https://icarneh.academia.edu/SamikChowdhury" target="_blank" class="hover:underline">Academia</a>
+    <div class="flex flex-col md:flex-row md:justify-between items-center space-y-6 md:space-y-0 pb-8 border-b border-gray-700">
+      <!-- Brand -->
+      <div class="text-center md:text-left">
+        <h3 class="text-2xl font-bold text-white font-playfair mb-2">Dr. Samik Chowdhury</h3>
+        <p class="text-gray-400">Climate-Smart Agriculture Researcher</p>
       </div>
 
-      <!-- Developer Credit -->
-      <div class="text-xs text-gray-500">
-        Designed and Developed by
-        <a href="https://zenzy.co.in/" target="_blank" class="text-white hover:underline">Zenzy Technologies</a>
+      <!-- Social Links -->
+      <div class="flex space-x-6">
+        <a href="https://in.linkedin.com/in/samik-chowdhury-1a785061" target="_blank" class="text-gray-400 hover:text-blue-400 transition-colors">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+          </svg>
+        </a>
+        <a href="https://www.researchgate.net/profile/Samik-Chowdhury" target="_blank" class="text-gray-400 hover:text-green-400 transition-colors">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M19.586 0H4.414C1.977 0 0 1.977 0 4.414v15.172C0 22.023 1.977 24 4.414 24h15.172C22.023 24 24 22.023 24 19.586V4.414C24 1.977 22.023 0 19.586 0z"/>
+          </svg>
+        </a>
+        <a href="https://icarneh.academia.edu/SamikChowdhury" target="_blank" class="text-gray-400 hover:text-purple-400 transition-colors">
+          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.372 0 0 5.372 0 12s5.372 12 12 12 12-5.372 12-12S18.628 0 12 0zm0 22C6.486 22 2 17.514 2 12S6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/>
+          </svg>
+        </a>
       </div>
     </div>
 
-    <!-- Bottom Centered Text -->
-    <div class="text-center mt-4 text-xs text-gray-500 pb-6">
-      © 2025 All rights reserved by Dr. Samik Chowdhury
+    <!-- Bottom Row -->
+    <div class="flex flex-col md:flex-row md:justify-between items-center space-y-4 md:space-y-0 pt-8">
+      <div class="text-center md:text-left">
+        <p class="text-gray-400 text-sm">© 2025 All rights reserved by Dr. Samik Chowdhury</p>
+      </div>
+      <div class="text-center md:text-right">
+        <p class="text-gray-500 text-xs">
+          Designed and Developed by
+          <a href="https://zenzy.co.in/" target="_blank" class="text-white hover:text-blue-400 transition-colors ml-1">Zenzy Technologies</a>
+        </p>
+      </div>
     </div>
   </div>
 </footer>
-<!-- ====== Footer Section End -->
+<!-- ====== Footer Section End ====== -->
 
-<!-- ====== Back to Top Button Start -->
-<button class="back-to-top" style="display: none;">
-  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<!-- ====== Back to Top Button Start ====== -->
+<button class="back-to-top fixed bottom-8 right-8 w-12 h-12 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full shadow-lg hover:shadow-xl transform hover:scale-110 transition-all duration-300 z-50" style="display: none;">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18" />
   </svg>
 </button>
-<!-- ====== Back to Top Button End -->
-    <!-- ====== All Scripts -->
-    <script src="assets/js/swiper-bundle.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <script>
-      // ==== for menu scroll
-      const pageLink = document.querySelectorAll(".ud-menu-scroll");
+<!-- ====== Back to Top Button End ====== -->
 
-      pageLink.forEach((elem) => {
-        elem.addEventListener("click", (e) => {
-          e.preventDefault();
-          document.querySelector(elem.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
-            offsetTop: 1 - 60,
-          });
-        });
+<!-- ====== All Scripts -->
+<script src="assets/js/swiper-bundle.min.js"></script>
+<script src="assets/js/main.js"></script>
+<script>
+  // ==== for menu scroll
+  const pageLink = document.querySelectorAll(".ud-menu-scroll");
+
+  pageLink.forEach((elem) => {
+    elem.addEventListener("click", (e) => {
+      e.preventDefault();
+      document.querySelector(elem.getAttribute("href")).scrollIntoView({
+        behavior: "smooth",
+        offsetTop: 1 - 60,
       });
+    });
+  });
 
-      // section menu active
-      function onScroll(event) {
-        const sections = document.querySelectorAll(".ud-menu-scroll");
-        const scrollPos =
-          window.pageYOffset ||
-          document.documentElement.scrollTop ||
-          document.body.scrollTop;
+  // section menu active
+  function onScroll(event) {
+    const sections = document.querySelectorAll(".ud-menu-scroll");
+    const scrollPos =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop;
 
-        for (let i = 0; i < sections.length; i++) {
-          const currLink = sections[i];
-          const val = currLink.getAttribute("href");
-          const refElement = document.querySelector(val);
-          const scrollTopMinus = scrollPos + 73;
-          if (
-            refElement.offsetTop <= scrollTopMinus &&
-            refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
-          ) {
-            document
-              .querySelector(".ud-menu-scroll")
-              .classList.remove("active");
-            currLink.classList.add("active");
-          } else {
-            currLink.classList.remove("active");
-          }
-        }
+    for (let i = 0; i < sections.length; i++) {
+      const currLink = sections[i];
+      const val = currLink.getAttribute("href");
+      const refElement = document.querySelector(val);
+      const scrollTopMinus = scrollPos + 73;
+      if (
+        refElement.offsetTop <= scrollTopMinus &&
+        refElement.offsetTop + refElement.offsetHeight > scrollTopMinus
+      ) {
+        document
+          .querySelector(".ud-menu-scroll")
+          .classList.remove("active");
+        currLink.classList.add("active");
+      } else {
+        currLink.classList.remove("active");
       }
+    }
+  }
 
-      window.document.addEventListener("scroll", onScroll);
+  window.document.addEventListener("scroll", onScroll);
 
-      // Testimonial
-      const testimonialSwiper = new Swiper(".testimonial-carousel", {
-        slidesPerView: 1,
+  // Testimonial
+  const testimonialSwiper = new Swiper(".testimonial-carousel", {
+    slidesPerView: 1,
+    spaceBetween: 30,
+
+    // Navigation arrows
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+
+    breakpoints: {
+      640: {
+        slidesPerView: 2,
         spaceBetween: 30,
+      },
+      1024: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+      1280: {
+        slidesPerView: 3,
+        spaceBetween: 30,
+      },
+    },
+  });
+</script>
 
-        // Navigation arrows
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-
-        breakpoints: {
-          640: {
-            slidesPerView: 2,
-            spaceBetween: 30,
-          },
-          1024: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          },
-          1280: {
-            slidesPerView: 3,
-            spaceBetween: 30,
-          },
-        },
-      });
-    </script>
-
-  </body>
+</body>
 </html>
