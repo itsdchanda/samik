@@ -1,0 +1,24 @@
+{
+  "name": "dr-samik-chowdhury-portfolio",
+  "version": "1.0.0",
+  "description": "Professional portfolio website for Dr. Samik Chowdhury - Agricultural Research Scientist",
+  "main": "index.html",
+  "scripts": {
+    "dev": "tailwindcss -i ./src/input.css -o ./src/css/tailwind.css --watch",
+    "build": "tailwindcss -i ./src/input.css -o ./src/css/tailwind.css --minify",
+    "serve": "python -m http.server 8000"
+  },
+  "keywords": [
+    "portfolio",
+    "research",
+    "agriculture",
+    "academic"
+  ],
+  "author": "Dr. Samik Chowdhury",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.0",
+    "postcss": "^8.4.32",
+    "autoprefixer": "^10.4.16"
+  }
+}
