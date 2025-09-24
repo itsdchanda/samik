@@ -4,6 +4,8 @@ document.addEventListener('DOMContentLoaded', function () {
   // ======= Sticky
   window.onscroll = function () {
     const ud_header = document.querySelector(".ud-header");
+    if (!ud_header) return; // Guard clause to prevent null errors
+    
     const sticky = ud_header.offsetTop;
     const logo = document.querySelectorAll(".header-logo");
 
@@ -68,17 +70,28 @@ document.addEventListener('DOMContentLoaded', function () {
   // ===== Sub-menu
   const submenuItems = document.querySelectorAll(".submenu-item");
   submenuItems.forEach((el) => {
-    el.querySelector("a").addEventListener("click", () => {
-      el.querySelector(".submenu").classList.toggle("hidden");
+    const submenuLink = el.querySelector("a");
+    const submenu = el.querySelector(".submenu");
+    if (submenuLink && submenu) {
+      submenuLink.addEventListener("click", () => {
+        submenu.classList.toggle("hidden");
+      });
+    }
     });
   });
 
   // ===== Faq accordion
   const faqs = document.querySelectorAll(".single-faq");
   faqs.forEach((el) => {
-    el.querySelector(".faq-btn").addEventListener("click", () => {
-      el.querySelector(".icon").classList.toggle("rotate-180");
-      el.querySelector(".faq-content").classList.toggle("hidden");
+    const faqBtn = el.querySelector(".faq-btn");
+    const icon = el.querySelector(".icon");
+    const content = el.querySelector(".faq-content");
+    if (faqBtn && icon && content) {
+      faqBtn.addEventListener("click", () => {
+        icon.classList.toggle("rotate-180");
+        content.classList.toggle("hidden");
+      });
+    }
     });
   });
 
@@ -87,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // ====== scroll top js
   function scrollTo(element, to = 0, duration = 500) {
+    if (!element) return; // Guard clause
     const start = element.scrollTop;
     const change = to - start;
     const increment = 20;
@@ -114,9 +128,12 @@ document.addEventListener('DOMContentLoaded', function () {
     return (-c / 2) * (t * (t - 2) - 1) + b;
   };
 
-  document.querySelector(".back-to-top").onclick = () => {
-    scrollTo(document.documentElement);
-  };
+  const backToTop = document.querySelector(".back-to-top");
+  if (backToTop) {
+    backToTop.onclick = () => {
+      scrollTo(document.documentElement);
+    };
+  }
 
     /* ========  themeSwitcher start ========= */
 
@@ -125,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Theme Vars
   const userTheme = localStorage.getItem('theme');
-  const systemTheme = window.matchMedia('(prefers-color0scheme: dark)').matches;
+  const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   // Initial Theme Check
   const themeCheck = () => {
@@ -148,14 +165,55 @@ document.addEventListener('DOMContentLoaded', function () {
   };
 
   // call theme switch on clicking buttons
-  themeSwitcher.addEventListener('click', () => {
-    themeSwitch();
-  });
+  if (themeSwitcher) {
+    themeSwitcher.addEventListener('click', () => {
+      themeSwitch();
+    });
+  }
 
   // invoke theme check on initial load
   themeCheck();
   /* ========  themeSwitcher End ========= */
 });
+  // ===== Contact Form Handling
+  const contactForm = document.getElementById('contactForm');
+  const successMessage = document.getElementById('successMessage');
+  
+  if (contactForm && successMessage) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(contactForm);
+      
+      // Submit to FormSubmit
+      fetch('https://formsubmit.co/samikchowdhury33@gmail.com', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (response.ok) {
+          // Show success message
+          successMessage.classList.remove('hidden');
+          contactForm.reset();
+          
+          // Scroll to success message
+          successMessage.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          
+          // Hide success message after 10 seconds
+          setTimeout(() => {
+            successMessage.classList.add('hidden');
+          }, 10000);
+        } else {
+          alert('There was an error sending your message. Please try again.');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        alert('There was an error sending your message. Please try again.');
+      });
+    });
+  }
 
 
 
